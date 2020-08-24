@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+
+  ezstream:
+    image: dashultz/ezstream:latest
+    restart: always
+    volumes:
+      - '/opt/radio/config:/ezstream:ro'
+      - '/opt/radio/media:/media:ro'
+    networks:
+      - radio
+
+  icecast:
+    image: infiniteproject/icecast:latest
+    restart: always
+    environment:
+      - 'ICECAST_SOURCE_PASSWORD=#{icecast_source_password}'
+      - 'ICECAST_ADMIN_PASSWORD=#{icecast_admin_password}'
+      - 'ICECAST_RELAY_PASSWORD=#{icecast_relay_password}'
+      - 'ICECAST_HOSTNAME=#{icecast_hostname}'
+    volumes:
+      - '/etc/localtime:/etc/localtime:ro'
+    ports:
+      - '8000:8000'
+    networks:
+      - radio
+
+networks:
+  radio:
+    driver: bridge
