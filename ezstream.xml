@@ -1,0 +1,31 @@
+<!--
+   EXAMPLE: MP3 playlist stream WITHOUT reencoding
+
+   This example streams a playlist that contains only MP3 files. No other file
+   formats may be listed. Since ezstream will not be doing any reencoding, the
+   resulting stream format (bitrate, samplerate, channels) will be of the
+   respective input files.
+ -->
+<ezstream>
+  <url>http://icecast:8000/stream</url>
+
+  <sourcepassword>#{icecast_source_password}</sourcepassword>
+  <format>MP3</format>
+  <filename>/ezstream/ezstream.sh</filename>
+  <playlist_program>1</playlist_program>
+  <stream_once>0</stream_once>
+
+  <!--
+    The following settings are used to describe your stream to the server.
+    It's up to you to make sure that the bitrate/samplerate/channels
+    information matches up with your input stream files.
+    -->
+  <svrinfoname>Example Radio</svrinfoname>
+  <svrinfogenre>Radio</svrinfogenre>
+  <svrinfodescription>This is a radio description.</svrinfodescription>
+
+  <!--
+    Prohibit the server to advertise the stream on a public YP directory:
+    -->
+  <svrinfopublic>0</svrinfopublic>
+</ezstream>
