@@ -6,6 +6,9 @@ Be sure to run chmod +x on ezstream.sh
 Put SOURCE password in ez stream config file:
 /opt/radio/config/ezstream.xml
 
+media path in config.json for song downloader should be
+/opt/radio/media/
+
 START EVERYTHING:
 sudo docker-compose up -d
 
@@ -19,4 +22,4 @@ TODO:
 - do ssl and 443?
 - chatbot on site to grab any song from there?
 - Landing page with player and info (right now it goes to ice cast landing page… how to change?
-- find typescript source code for js files
+
